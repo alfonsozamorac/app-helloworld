@@ -10,14 +10,14 @@ RUN apt-get update && apt-get install -y \
 # Set environment variables to ensure Python output is sent straight to terminal (e.g., logs)
 ENV PYTHONUNBUFFERED=1
 
-# Install the dependencies
-RUN pip install --no-cache-dir -r requirements.txt
-
 # Create and set the working directory
 WORKDIR /app
 
 # Copy the requirements file into the container
 COPY . /app/
+
+# Install the dependencies
+RUN pip install --no-cache-dir -r requirements.txt
 
 # Expose any necessary ports
 EXPOSE 8080
